@@ -1,15 +1,6 @@
 # Write a program to illustrate tower of hanoi using recursion
 
 def tower_of_hanoi(n, source, auxiliary, destination):
-    """
-    Solve the Tower of Hanoi puzzle recursively
-    
-    Args:
-        n: Number of disks
-        source: Source rod
-        auxiliary: Auxiliary rod
-        destination: Destination rod
-    """
     if n == 1:
         print(f"Move disk 1 from {source} to {destination}")
         return
