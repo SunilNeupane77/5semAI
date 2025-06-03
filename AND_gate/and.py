@@ -1,52 +1,20 @@
-# Write a program to implement and gate
-def AND_gate(input1, input2):
-    """
-    Implements an AND gate logic
-    
-    Args:
-        input1: First input (0 or 1)
-        input2: Second input (0 or 1)
-        
-    Returns:
-        1 if both inputs are 1, otherwise 0
-    """
-    if input1 == 1 and input2 == 1:
-        return 
-    else:
-        return 0
+# Write a program to implement AND gate
 
-def display_truth_table():
-    """Display the truth table for AND gate"""
-    print("AND Gate Truth Table:")
-    print("--------------------")
-    print("| Input1 | Input2 | Output |")
-    print("--------------------")
+def and_gate_recursive(bits, A=0, B=0):
+    if bits == 0:
+        output = A & B
+        print(f"A = {A}, B = {B} => A AND B = {output}")
+        return
     
-    for input1 in [0, 1]:
-        for input2 in [0, 1]:
-            output = AND_gate(input1, input2)
-            print(f"|   {input1}    |   {input2}    |   {output}    |")
-    
-    print("--------------------")
+    # Recurse with reduced bits
+    and_gate_recursive(bits - 1, 0, 0)
+    and_gate_recursive(bits - 1, 0, 1)
+    and_gate_recursive(bits - 1, 1, 0)
+    and_gate_recursive(bits - 1, 1, 1)
 
-def user_interaction():
-    """Allow user to test the AND gate with custom inputs"""
-    try:
-        print("\nTest AND gate with your inputs:")
-        input1 = int(input("Enter first input (0 or 1): "))
-        input2 = int(input("Enter second input (0 or 1): "))
-        
-        if input1 not in [0, 1] or input2 not in [0, 1]:
-            print("Inputs must be either 0 or 1")
-            return
-        
-        result = AND_gate(input1, input2)
-        print(f"\nAND({input1}, {input2}) = {result}")
-        
-    except ValueError:
-        print("Please enter valid binary values (0 or 1)")
+# Display a title for clarity
+print("AND Gate Truth Table (Recursive Implementation):")
+print("---------------------------------------------")
 
-if __name__ == "__main__":
-    print("AND Gate Implementation\n")
-    display_truth_table()
-    user_interaction()
+# Start the recursion with bits=1 to show all combinations exactly once
+and_gate_recursive(1)
