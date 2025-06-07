@@ -1,15 +1,6 @@
 # Write a program to disolay factorial number using recursion
 
 def factorial(n):
-    """
-    Calculate factorial of n using recursion
-    
-    Args:
-        n: A non-negative integer
-        
-    Returns:
-        The factorial of n
-    """
     # Base case
     if n == 0 or n == 1:
         return 1
@@ -18,7 +9,6 @@ def factorial(n):
     return n * factorial(n-1)
 
 def display_factorial():
-    """Get user input and display the factorial"""
     try:
         num = int(input("Enter a non-negative integer: "))
         
